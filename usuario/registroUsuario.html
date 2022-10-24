@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <title>Login</title>
+    <title>Registro Usuario</title>
 </head>
 <body>
     <header>
@@ -21,7 +21,7 @@
           
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="#">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
@@ -42,53 +42,59 @@
         <main role="main" class="inner cover">
             <section class="jumbotron jumbotron-fluid">
                 <h1 class="display-4 text-center">Registro - Usuario</h1>
+                <br>
                 <div class="container">
                     <form>
                         <div class="form-row">
-                          <div class="form-group col-md-6">
-                            <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                          <div class="form-group col-md-4">
+                            <label for="inputEmail4">Nombres</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="John">
                           </div>
-                          <div class="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                          <div class="form-group col-md-4">
+                            <label for="inputPassword4">Apellidos</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Doe">
                           </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress">Address</label>
-                          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>
-                        <div class="form-group">
-                          <label for="inputAddress2">Address 2</label>
-                          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                          <div class="form-group col-md-4">
+                            <label for="inputPassword4">Carrera-Estudios</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Doe">
+                          </div>
                         </div>
                         <div class="form-row">
                           <div class="form-group col-md-6">
-                            <label for="inputCity">City</label>
-                            <input type="text" class="form-control" id="inputCity">
+                            <label for="inputEmail4">Correo</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="johndoe@example.com">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="inputPassword4">Contraseña</label>
+                            <input type="password" class="form-control" id="inputAddress" placeholder="Contraseña">
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="inputAddress">Apodo</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="johndoe123">
                           </div>
                           <div class="form-group col-md-4">
-                            <label for="inputState">State</label>
+                            <label for="inputState">Sexo</label>
                             <select id="inputState" class="form-control">
                               <option selected>Choose...</option>
                               <option>...</option>
                             </select>
                           </div>
                           <div class="form-group col-md-2">
-                            <label for="inputZip">Zip</label>
-                            <input type="text" class="form-control" id="inputZip">
+                            <label for="inputState">Edad</label>
+                            <select id="inputState" class="form-control">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
                           </div>
                         </div>
                         <div class="form-group">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                              Check me out
-                            </label>
-                          </div>
+                          <label for="exampleFormControlTextarea1">Biografía</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Algo sobre mí"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign in</button>
-                      </form>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
                 </div>
             </section>
         </main>
@@ -100,8 +106,7 @@
                 CHAMBA
             </p>
             <p>
-                Album example is © Bootstrap, but please download and customize it for yourself!
-            </p>
+              Todos los derechos reservados © Chamba, 2022            </p>
         </div>
     </footer>
 </body>

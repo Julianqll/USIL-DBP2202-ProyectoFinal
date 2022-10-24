@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <title>Chamba</title>
+    <title>Crear puesto</title>
 </head>
 <body>
     <header>
@@ -40,52 +40,40 @@
         <section class="jumbotron jumbotron-fluid text-center">
             <div class="container">
                 <h1 class="display-4">Crear puesto</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <p class="lead">Ingrese la información respectiva con el fin de crear un anuncio de puestos disponibles en su empresa</p>
                 <form>
                     <div class="form-row">
-                      <div class="form-group col-md-6">
-                        <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                      <div class="form-group col-md-4">
+                        <label for="inputEmail4">Nombre del Puesto</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre">
                       </div>
-                      <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                      <div class="form-group col-md-4">
+                        <label for="inputPassword4">Salario</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Salario">
                       </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <div class="form-group">
-                      <label for="inputAddress2">Address 2</label>
-                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                      <div class="form-group col-md-4">
+                        <label for="inputPassword4">Lugar</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Lugar">
+                      </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
+                        <label for="inputState">Tipo de puesto</label>
                         <select id="inputState" class="form-control">
                           <option selected>Choose...</option>
                           <option>...</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-2">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Vacantes disponibles</label>
+                        <input type="number" class="form-control" id="inputPassword4" placeholder="Salario">
                       </div>
                     </div>
                     <div class="form-group">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
+                      <label for="exampleFormControlTextarea1">Descripción del puesto</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descripción"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary">Crear puesto</button>
                   </form>
             </div>
         </section>
@@ -96,35 +84,20 @@
                 <hr class="my-4">
                 <div class="card w-100">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
+                      <h5 class="card-title">Junior Software Engineer</h5>
+                      <p class="card-text">Buscamos un desarrollador de Software responsable y que le interese automatizar procesos de ventas</p>
+                      <a href="#" class="btn btn-primary">Ver postulaciones</a>
                     </div>
                 </div>
                 <br>
                 <div class="card w-100">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
+                      <h5 class="card-title">Marketing Content Manager</h5>
+                      <p class="card-text">Buscamos personal para nuestra área de Marketing capaz de desarrollar y supervisar contenidos para ser publicados en redes sociales</p>
+                      <a href="#" class="btn btn-primary">Ver postulaciones</a>
                     </div>
                 </div>
                 <br>
-                <div class="card w-100">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
-                <br>
-                <div class="card w-100">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                      <a href="#" class="btn btn-primary">Button</a>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -136,7 +109,7 @@
                 CHAMBA
             </p>
             <p>
-                Album example is © Bootstrap, but please download and customize it for yourself!
+              Todos los derechos reservados © Chamba, 2022
             </p>
         </div>
     </footer>
