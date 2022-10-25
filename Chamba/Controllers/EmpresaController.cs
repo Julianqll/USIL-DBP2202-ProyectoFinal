@@ -14,5 +14,11 @@ namespace Chamba.Controllers
         {
             return View();
         }
+
+        [HttpGet, Route("/perfilEmpresa")]
+        public IActionResult PerfilEmpresa()
+        {
+            return View();
+        }
     }
 }
