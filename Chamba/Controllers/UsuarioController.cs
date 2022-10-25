@@ -28,5 +28,17 @@ namespace Chamba.Controllers
         {
             return View();
         }
+
+        [HttpGet, Route("/buscarPuestos")]
+        public IActionResult BuscarPuestos()
+        {
+            return View();
+        }
+
+        [HttpGet, Route("/misPostulaciones")]
+        public IActionResult MisPostulaciones()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<main>
+    <!--Sección de logo y buscar-->
+    <section class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="display-4">Crear puesto</h1>
+            <p class="lead">Ingrese la información respectiva con el fin de crear un anuncio de puestos disponibles en su empresa</p>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">Nombre del Puesto</label>
+                        <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Salario</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Salario">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Lugar</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Lugar">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputState">Tipo de puesto</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Vacantes disponibles</label>
+                        <input type="number" class="form-control" id="inputPassword4" placeholder="Salario">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descripción del puesto</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Descripción"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear puesto</button>
+            </form>
+        </div>
+    </section>
+    <!--Carousel de puestos-->
+    <section>
+        <div class="container">
+            <h3 class="text-center">Puestos creados</h3>
+            <hr class="my-4">
+            <div class="card w-100">
+                <div class="card-body">
+                    <h5 class="card-title">Junior Software Engineer</h5>
+                    <p class="card-text">Buscamos un desarrollador de Software responsable y que le interese automatizar procesos de ventas</p>
+                    <a href="#" class="btn btn-primary">Ver postulaciones</a>
+                </div>
+            </div>
+            <br>
+            <div class="card w-100">
+                <div class="card-body">
+                    <h5 class="card-title">Marketing Content Manager</h5>
+                    <p class="card-text">Buscamos personal para nuestra área de Marketing capaz de desarrollar y supervisar contenidos para ser publicados en redes sociales</p>
+                    <a href="#" class="btn btn-primary">Ver postulaciones</a>
+                </div>
+            </div>
+            <br>
+        </div>
+    </section>
+</main>
