@@ -20,5 +20,11 @@ namespace Chamba.Controllers
         {
             return View();
         }
+
+        [HttpGet, Route("/registroEmpresa")]
+        public IActionResult RegistroEmpresa()
+        {
+            return View();
+        }
     }
 }
