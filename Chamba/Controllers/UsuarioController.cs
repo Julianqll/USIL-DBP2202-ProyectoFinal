@@ -16,8 +16,15 @@ namespace Chamba.Controllers
         {
             return View();
         }
+
         [HttpGet, Route("/perfilUsuario")]
         public IActionResult PerfilUsuario()
+        {
+            return View();
+        }
+
+        [HttpGet, Route("/registroUsuario")]
+        public IActionResult RegistroUsuario()
         {
             return View();
         }
