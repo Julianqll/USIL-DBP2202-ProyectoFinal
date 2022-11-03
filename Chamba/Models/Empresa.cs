@@ -9,10 +9,10 @@ namespace Chamba.Models
         public string ApodoEmpresa { get; set; } = null!;
         public string NombreEmpresa { get; set; } = null!;
         public int RubroEmpresa { get; set; }
-        public int AñoFundacion { get; set; }
+        public DateOnly FFundacion { get; set; }
         public string DireccionEmpresa { get; set; } = null!;
         public string CorreoEmpresa { get; set; } = null!;
-        public string ContrasenaEmpresa { get; set; } = null!;
         public string BiografiaEmpresa { get; set; } = null!;
+        public string FotoPerfilEmpresa { get; set; } = null!;
     }
 }

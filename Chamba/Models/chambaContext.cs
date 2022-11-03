@@ -17,10 +17,19 @@ namespace Chamba.Models
         }
 
         public virtual DbSet<Empresa> Empresas { get; set; } = null!;
+        public virtual DbSet<Login> Logins { get; set; } = null!;
         public virtual DbSet<Postulacion> Postulacions { get; set; } = null!;
         public virtual DbSet<Puesto> Puestos { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseMySql("server=localhost;database=chamba;uid=root", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.25-mariadb"));
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,17 +51,9 @@ namespace Chamba.Models
                     .HasColumnType("text")
                     .HasColumnName("apodo_empresa");
 
-                entity.Property(e => e.AñoFundacion)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("año_fundacion");
-
                 entity.Property(e => e.BiografiaEmpresa)
                     .HasColumnType("text")
                     .HasColumnName("biografia_empresa");
-
-                entity.Property(e => e.ContrasenaEmpresa)
-                    .HasColumnType("text")
-                    .HasColumnName("contrasena_empresa");
 
                 entity.Property(e => e.CorreoEmpresa)
                     .HasColumnType("text")
@@ -62,6 +63,12 @@ namespace Chamba.Models
                     .HasColumnType("text")
                     .HasColumnName("direccion_empresa");
 
+                entity.Property(e => e.FFundacion).HasColumnName("f_fundacion");
+
+                entity.Property(e => e.FotoPerfilEmpresa)
+                    .HasColumnType("text")
+                    .HasColumnName("foto_perfil_empresa");
+
                 entity.Property(e => e.NombreEmpresa)
                     .HasColumnType("text")
                     .HasColumnName("nombre_empresa");
@@ -69,6 +76,30 @@ namespace Chamba.Models
                 entity.Property(e => e.RubroEmpresa)
                     .HasColumnType("int(11)")
                     .HasColumnName("rubro_empresa");
+            });
+
+            modelBuilder.Entity<Login>(entity =>
+            {
+                entity.HasKey(e => e.IdLogin)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("login");
+
+                entity.Property(e => e.IdLogin)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("id_login");
+
+                entity.Property(e => e.Contraseña)
+                    .HasColumnType("text")
+                    .HasColumnName("contraseña");
+
+                entity.Property(e => e.Correo)
+                    .HasColumnType("text")
+                    .HasColumnName("correo");
+
+                entity.Property(e => e.Rol)
+                    .HasColumnType("text")
+                    .HasColumnName("rol");
             });
 
             modelBuilder.Entity<Postulacion>(entity =>
@@ -126,6 +157,10 @@ namespace Chamba.Models
                     .HasColumnType("int(11)")
                     .HasColumnName("empresa_puesto");
 
+                entity.Property(e => e.FotoPuesto)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("foto_puesto");
+
                 entity.Property(e => e.LugarPuesto)
                     .HasColumnType("text")
                     .HasColumnName("lugar_puesto");
@@ -168,21 +203,19 @@ namespace Chamba.Models
                     .HasColumnType("text")
                     .HasColumnName("biografia_usuario");
 
-                entity.Property(e => e.ContrasenaUsuario)
-                    .HasColumnType("text")
-                    .HasColumnName("contrasena_usuario");
-
                 entity.Property(e => e.CorreoUsuario)
                     .HasColumnType("text")
                     .HasColumnName("correo_usuario");
 
-                entity.Property(e => e.EdadUsuario)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("edad_usuario");
-
                 entity.Property(e => e.EstudiosUsuario)
                     .HasColumnType("text")
                     .HasColumnName("estudios_usuario");
+
+                entity.Property(e => e.FNacUsuario).HasColumnName("f_nac_usuario");
+
+                entity.Property(e => e.FotoPerfilUsuario)
+                    .HasColumnType("text")
+                    .HasColumnName("foto_perfil_usuario");
 
                 entity.Property(e => e.NombresUsuario)
                     .HasColumnType("text")

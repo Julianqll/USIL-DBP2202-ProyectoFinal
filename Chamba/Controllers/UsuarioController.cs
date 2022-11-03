@@ -11,12 +11,6 @@ namespace Chamba.Controllers
             Context = context;
         }
 
-        [HttpGet, Route("/loginUsuario")]
-        public IActionResult LoginUsuario()
-        {
-            return View();
-        }
-
         [HttpGet, Route("/perfilUsuario")]
         public IActionResult PerfilUsuario()
         {
@@ -27,6 +21,25 @@ namespace Chamba.Controllers
         public IActionResult RegistroUsuario()
         {
             return View();
+        }
+
+        [HttpPost, Route("/registroUsuario")]
+        public IActionResult RegistroUsuarioPost(Usuario usuario)
+        {
+            if (ModelState.IsValid)
+            {
+                Context.Usuarios.Add(usuario);
+                Context.SaveChanges();
+                Login login = new Login();
+                login.Correo = usuario.CorreoUsuario;
+                login.Contraseña = Request.Form["contrasenaField"];
+                login.Rol = "U";
+                Context.Logins.Add(login);
+                Context.SaveChanges();
+                return Redirect("/login");
+
+            }
+            return View("RegistroUsuario");
         }
 
         [HttpGet, Route("/buscarPuestos")]

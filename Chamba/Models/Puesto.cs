@@ -13,5 +13,6 @@ namespace Chamba.Models
         public int TipoPuesto { get; set; }
         public int VacantesPuesto { get; set; }
         public int EmpresaPuesto { get; set; }
+        public int FotoPuesto { get; set; }
     }
 }
