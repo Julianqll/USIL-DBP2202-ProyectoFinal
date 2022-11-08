@@ -70,7 +70,9 @@
                         <span asp-validation-for="BiografiaUsuario" class="text-danger"></span>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="file" class="form-control" id="inputGroupFile02" asp-for="FotoPerfilUsuario">
+                        <label for="exampleFormControlTextarea1">Link a foto de perfil</label>
+
+                        <input type="text" class="form-control" id="inputGroupFile02" asp-for="FotoPerfilUsuario">
                         <span asp-validation-for="FotoPerfilUsuario" class="text-danger"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrar</button>

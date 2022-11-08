@@ -56,7 +56,12 @@ namespace Chamba.Controllers
         [HttpGet, Route("/crearPuestos")]
         public IActionResult CrearPuestos()
         {
-            var puestos = Context.Puestos;
+            String? sesion = HttpContext.Session.GetString("empresa");
+            var sesionJson = JsonConvert.DeserializeObject<Empresa>(sesion);
+            var puestos = (from TablaPuestos in Context.Puestos
+                           where
+                           TablaPuestos.Empresa == sesionJson.IdEmpresa
+                           select TablaPuestos).AsEnumerable();
             ViewBag.Puestos = puestos;
             return View();
         }
@@ -84,10 +89,6 @@ namespace Chamba.Controllers
         {
             String? sesion = HttpContext.Session.GetString("empresa");
             var sesionJson = JsonConvert.DeserializeObject<Empresa>(sesion);
-            var puestos = (from TablaPuestos in Context.Puestos
-                           where
-                           TablaPuestos.Empresa == sesionJson.IdEmpresa
-                           select TablaPuestos).AsEnumerable();
             var postulaciones = (from TablaPostulaciones in Context.Postulacions
                                  join TablaPuestos in Context.Puestos
                                  on TablaPostulaciones.Puesto equals TablaPuestos.IdPuesto
@@ -101,10 +102,32 @@ namespace Chamba.Controllers
                                      Nombre = TablaUsuarios.NombresUsuario,
                                      Apellido = TablaUsuarios.ApellidosUsuario,
                                      Comentario = TablaPostulaciones.ComentarioPostulante,
+                                     Puesto = TablaPuestos.NombrePuesto,
+                                     Vacantes = TablaPuestos.VacantesPuesto,
                                  }).AsEnumerable();
             ViewBag.Postulaciones = postulaciones;
-            ViewBag.Puestos = puestos;
             return View();
+        }
+
+        [HttpPost, Route("/editarPerfilEmpresa")]
+        public IActionResult EditarPerfil()
+        {
+            String? sesion = HttpContext.Session.GetString("empresa");
+            var sesionJson = JsonConvert.DeserializeObject<Empresa>(sesion);
+            var resultado = (from TablaEmpresas in Context.Empresas
+                             where TablaEmpresas.IdEmpresa == sesionJson.IdEmpresa
+                             select TablaEmpresas).Single();
+            resultado.ApodoEmpresa = Request.Form["apodoEmpresa"];
+            resultado.NombreEmpresa = Request.Form["nombreEmpresa"];
+            resultado.CorreoEmpresa = Request.Form["correoEmpresa"];
+            resultado.BiografiaEmpresa = Request.Form["bioEmpresa"];
+            resultado.FotoPerfilEmpresa = Request.Form["fotoEmpresa"];
+            Context.SaveChanges();
+            var empresa = (from TablaEmpresas in Context.Empresas
+                           where TablaEmpresas.CorreoEmpresa == sesionJson.CorreoEmpresa
+                           select TablaEmpresas).FirstOrDefault();
+            HttpContext.Session.SetString("empresa", JsonConvert.SerializeObject(empresa));
+            return Redirect("/perfilEmpresa");
         }
     }
 }

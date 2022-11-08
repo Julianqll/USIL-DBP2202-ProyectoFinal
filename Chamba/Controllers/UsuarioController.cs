@@ -111,5 +111,26 @@ namespace Chamba.Controllers
 
             return View();
         }
+        [HttpPost, Route("/editarPerfilUsuario")]
+        public IActionResult EditarPerfil()
+        {
+            String? sesion = HttpContext.Session.GetString("usuario");
+            var sesionJson = JsonConvert.DeserializeObject<Usuario>(sesion);
+            var resultado = (from TablaUsuarios in Context.Usuarios
+                             where TablaUsuarios.IdUsuario == sesionJson.IdUsuario
+                             select TablaUsuarios).Single();
+            resultado.ApodoUsuario = Request.Form["apodoEmpresa"];
+            resultado.NombresUsuario = Request.Form["nombreEmpresa"];
+            resultado.ApellidosUsuario = Request.Form["apellidos"];
+            resultado.CorreoUsuario = Request.Form["correoEmpresa"];
+            resultado.BiografiaUsuario = Request.Form["bioEmpresa"];
+            resultado.FotoPerfilUsuario = Request.Form["fotoEmpresa"];
+            Context.SaveChanges();
+            var usuario = (from TablaUsuarios in Context.Usuarios
+                           where TablaUsuarios.CorreoUsuario == sesionJson.CorreoUsuario
+                           select TablaUsuarios).FirstOrDefault();
+            HttpContext.Session.SetString("usuario", JsonConvert.SerializeObject(usuario));
+            return Redirect("/perfilUsuario");
+        }
     }
 }
