@@ -1,0 +1,82 @@
+﻿@model Chamba.Models.Puesto 
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
+
+}
+<main>
+    <!--Sección de logo y buscar-->
+    <section class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+            <h1 class="display-4">Crear puesto</h1>
+            <p class="lead">Ingrese la información respectiva con el fin de crear un anuncio de puestos disponibles en su empresa</p>
+            <form action="/crearPuestos" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputEmail4">Nombre del Puesto</label>
+                        <input type="text" asp-for="NombrePuesto" class="form-control" id="inputEmail4" placeholder="Nombre">
+                        <span asp-validation-for="NombrePuesto" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Salario</label>
+                        <input type="text" class="form-control" asp-for="Salario" id="inputPassword4" placeholder="Salario">
+                        <span asp-validation-for="Salario" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputPassword4">Lugar</label>
+                        <input type="text" class="form-control" asp-for="LugarPuesto" id="inputPassword4" placeholder="Lugar">
+                        <span asp-validation-for="LugarPuesto" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Tipo de puesto</label>
+                        <input type="text" class="form-control" asp-for="TipoPuesto" id="inputPassword4" placeholder="Tipo">
+                        <span asp-validation-for="TipoPuesto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Vacantes disponibles</label>
+                        <input type="number" class="form-control" asp-for="VacantesPuesto" id="inputPassword4" placeholder="Vacantes">
+                        <span asp-validation-for="VacantesPuesto" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descripción del puesto</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="DescripcionPuesto" placeholder="Descripción"></textarea>
+                    <span asp-validation-for="DescripcionPuesto" class="text-danger"></span>
+
+                </div>
+                <div class="input-group mb-3">
+                    <label for="exampleFormControlTextarea1">Link de foto referencial</label>
+                    <input type="text" class="form-control" id="inputGroupFile02" asp-for="FotoPuesto">
+                    <span asp-validation-for="FotoPuesto" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear puesto</button>
+            </form>
+        </div>
+    </section>
+    <!--Carousel de puestos-->
+    <section>
+        <div class="container">
+            <h3 class="text-center">Puestos creados</h3>
+            <hr class="my-4">
+            @foreach(var item in ViewBag.Puestos)
+            {
+                <div class="card w-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.NombrePuesto</h5>
+                        <p class="card-text">@item.DescripcionPuesto</p>
+                        <a href="/postulaciones" class="btn btn-primary">Ver postulaciones</a>
+                    </div>
+                </div>
+                <br>
+            }
+        </div>
+    </section>
+</main>

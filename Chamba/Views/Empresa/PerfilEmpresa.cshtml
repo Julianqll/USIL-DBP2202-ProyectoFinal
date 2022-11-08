@@ -1,5 +1,89 @@
-﻿@*
+﻿@model Chamba.Models.Empresa
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
+
 }
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <section class="jumbotron jumbotron-fluid">
+            <h6 class="display-4 text-center">Perfil</h6>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img class="rounded-circle" src="@Model.FotoPerfilEmpresa" alt="Generic placeholder image" width="140" height="140">
+                        <h3>@Model.ApodoEmpresa</h3>
+                        <p>@Model.BiografiaEmpresa</p>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Editar Perfil
+                        </button>
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Editar Perfil</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/editarPerfilEmpresa" method="post">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">Apodo de empresa</label>
+                                                    <input type="text" asp-for="ApodoEmpresa" class="form-control" id="inputAddress" name="apodoEmpresa" placeholder="John">
+                                                    <span asp-validation-for="ApodoEmpresa" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputEmail4">Nombre de empresa</label>
+                                                    <input type="text" asp-for="NombreEmpresa" class="form-control" id="inputAddress" name="nombreEmpresa" placeholder="John">
+                                                    <span asp-validation-for="NombreEmpresa" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="inputEmail4">Correo de empresa</label>
+                                                    <input type="text" asp-for="CorreoEmpresa" class="form-control" id="inputAddress" name="correoEmpresa" placeholder="johndoe@example.com">
+                                                    <span asp-validation-for="CorreoEmpresa" class="text-danger"></span>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Biografía</label>
+                                                <textarea class="form-control" asp-for="BiografiaEmpresa" id="exampleFormControlTextarea1" name="bioEmpresa" rows="3" placeholder="Algo sobre la empresa"></textarea>
+                                                <span asp-validation-for="BiografiaEmpresa" class="text-danger"></span>
+                                            </div>
+                                            <div class="input-group mb-3">
+                                                <input type="text" class="form-control" name="fotoEmpresa" id="inputGroupFile02" asp-for="FotoPerfilEmpresa">
+                                                <span asp-validation-for="FotoPerfilEmpresa" class="text-danger"></span>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <br>
+                        <h2>Nombre</h2>
+                        <p>@Model.NombreEmpresa</p>
+                        <h2>Rubro</h2>
+                        <p>@Model.RubroEmpresa</p>
+                        <h2>Año de fundación</h2>
+                        <p>@Model.FFundacion</p>
+                        <h2>Dirección</h2>
+                        <p>@Model.DireccionEmpresa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

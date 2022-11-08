@@ -1,5 +1,75 @@
-﻿@*
+﻿@model Chamba.Models.Empresa
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "~/Views/Shared/LayoutOthers.cshtml";
+
 }
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <section class="jumbotron jumbotron-fluid">
+            <h1 class="display-4 text-center">Registro - Empresa</h1>
+            <br>
+            <div class="container">
+                <form action="/registroEmpresa" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Apodo de empresa</label>
+                            <input type="text" asp-for="ApodoEmpresa" class="form-control" id="inputAddress" placeholder="John">
+                            <span asp-validation-for="ApodoEmpresa" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Nombre de empresa</label>
+                            <input type="text" asp-for="NombreEmpresa" class="form-control" id="inputAddress" placeholder="John">
+                            <span asp-validation-for="NombreEmpresa" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputPassword4">Rubro de empresa</label>
+                            <input type="text" asp-for="RubroEmpresa" class="form-control" id="inputAddress" placeholder="Doe">
+                            <span asp-validation-for="RubroEmpresa" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputPassword4">Año de fundación</label>
+                            <br />
+                            <input type="date" id="fechaFund" name="fundacion" asp-for="FFundacion">
+                            <span asp-validation-for="FFundacion" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Correo de empresa</label>
+                            <input type="text" asp-for="CorreoEmpresa" class="form-control" id="inputAddress" placeholder="johndoe@example.com">
+                            <span asp-validation-for="CorreoEmpresa" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Contraseña</label>
+                            <input type="password" class="form-control" id="contrasenaField" name="contrasenaField" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputAddress">Dirección</label>
+                            <input type="text" asp-for="DireccionEmpresa" class="form-control" id="inputAddress" placeholder="johndoe123">
+                            <span asp-validation-for="DireccionEmpresa" class="text-danger"></span>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Biografía</label>
+                        <textarea class="form-control" asp-for="BiografiaEmpresa" id="exampleFormControlTextarea1" rows="3" placeholder="Algo sobre la empresa"></textarea>
+                        <span asp-validation-for="BiografiaEmpresa" class="text-danger"></span>
+
+                    </div>
+                    <div class="input-group mb-3">
+                        <label for="exampleFormControlTextarea1">Link a foto de perfil</label>
+                        <input type="text" class="form-control" id="inputGroupFile02" asp-for="FotoPerfilEmpresa">
+                        <span asp-validation-for="FotoPerfilEmpresa" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</div>
