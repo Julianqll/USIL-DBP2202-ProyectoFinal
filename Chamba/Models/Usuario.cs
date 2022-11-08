@@ -6,6 +6,11 @@ namespace Chamba.Models
 {
     public partial class Usuario
     {
+        public Usuario()
+        {
+            Postulacions = new HashSet<Postulacion>();
+        }
+
         public int IdUsuario { get; set; }
         [Required(ErrorMessage = "Es obligatorio")]
 
@@ -33,5 +38,8 @@ namespace Chamba.Models
         [Required(ErrorMessage = "Es obligatorio")]
 
         public string FotoPerfilUsuario { get; set; } = null!;
+
+
+        public virtual ICollection<Postulacion> Postulacions { get; set; }
     }
 }

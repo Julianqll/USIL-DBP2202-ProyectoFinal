@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "~/Views/Shared/LayoutUsuario.cshtml";
 }
 
 <main>
@@ -13,11 +14,9 @@
                 Aquí podrás buscar el puesto que tanto estás esperando, puedes probar ingresando el nombre del puesto, tipo de puesto así como también lugar
                 nombre de la empresa en la buscas
             </p>
-            <form>
-                <input class="form-control mr-sm-2" type="search" placeholder="Ingresa los datos del puesto" aria-label="Search">
-                <br>
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Buscar puestos</button>
-            </form>
+            <input id="myInput"  class="form-control mr-sm-2" type="search" placeholder="Ingresa los datos del puesto" aria-label="Search">
+            <br>
+            <button class="btn btn-primary my-2 my-sm-0" id="search">Buscar puestos</button>
         </div>
     </section>
     <!--Carousel de puestos-->
@@ -25,22 +24,33 @@
         <div class="container">
             <h3 class="text-center">Puestos disponibles</h3>
             <hr class="my-4">
-            <div class="card w-100">
-                <div class="card-body">
-                    <h5 class="card-title">Junior Software Engineer</h5>
-                    <p class="card-text">Buscamos un desarrollador de Software responsable y que le interese automatizar procesos de ventas</p>
-                    <a href="#" class="btn btn-primary">Ver postulaciones</a>
-                </div>
+            <div id="myDIV">
+                @foreach (var item in ViewBag.Puestos)
+                {
+                    <div class="card w-100 puestoscard">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.NombrePuesto</h5>
+                            <p class="card-text">@item.DescripcionPuesto</p>
+                            <a href="/postular/@item.IdPuesto" class="btn btn-primary">Postular</a>
+                        </div>
+                    </div>
+                    <br>
+                }
             </div>
-            <br>
-            <div class="card w-100">
-                <div class="card-body">
-                    <h5 class="card-title">Marketing Content Manager</h5>
-                    <p class="card-text">Buscamos personal para nuestra área de Marketing capaz de desarrollar y supervisar contenidos para ser publicados en redes sociales</p>
-                    <a href="#" class="btn btn-primary">Ver postulaciones</a>
-                </div>
-            </div>
-            <br>
         </div>
     </section>
 </main>
+<script>
+    $(document).ready(function () {
+        $("#search").on("click", function () {
+            $('.puestoscard').hide();
+            var txt = $('#myInput').val();
+            $('.puestoscard').each(function () {
+                if ($(this).text().toUpperCase().indexOf(txt.toUpperCase()) != -1) {
+                    $(this).show();
+                }
+            });
+
+        });
+    });
+</script>

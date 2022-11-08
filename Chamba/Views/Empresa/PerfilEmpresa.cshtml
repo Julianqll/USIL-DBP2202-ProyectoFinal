@@ -1,5 +1,38 @@
-﻿@*
+﻿@model Chamba.Models.Empresa
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "~/Views/Shared/LayoutEmpresa.cshtml";
+
 }
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <section class="jumbotron jumbotron-fluid">
+            <h6 class="display-4 text-center">Perfil</h6>
+            <br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img class="rounded-circle" src="@Model.FotoPerfilEmpresa" alt="Generic placeholder image" width="140" height="140">
+                        <h3>@Model.ApodoEmpresa</h3>
+                        <p>@Model.BiografiaEmpresa</p>
+                        <p><a class="btn btn-primary" href="#" role="button">Editar perfil</a></p>
+                    </div>
+                    <div class="col-lg-6">
+                        <br>
+                        <h2>Nombre</h2>
+                        <p>@Model.NombreEmpresa</p>
+                        <h2>Rubro</h2>
+                        <p>@Model.RubroEmpresa</p>
+                        <h2>Año de fundación</h2>
+                        <p>@Model.FFundacion</p>
+                        <h2>Dirección</h2>
+                        <p>@Model.DireccionEmpresa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

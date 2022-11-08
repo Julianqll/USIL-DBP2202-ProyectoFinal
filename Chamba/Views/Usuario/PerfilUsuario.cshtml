@@ -1,7 +1,9 @@
-﻿@*
+﻿@model Chamba.Models.Usuario
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "~/Views/Shared/LayoutUsuario.cshtml";
 }
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
     <main role="main" class="inner cover">
@@ -11,19 +13,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-                        <h3>Julianqll</h3>
-                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                        <img class="rounded-circle" src="@Model.FotoPerfilUsuario" alt="Generic placeholder image" width="140" height="140">
+                        <h3>@Model.ApodoUsuario</h3>
+                        <p>@Model.BiografiaUsuario</p>
                         <p><a class="btn btn-primary" href="#" role="button">Editar perfil</a></p>
                     </div>
                     <div class="col-lg-6">
                         <br>
                         <h2>Nombre Completo</h2>
-                        <p>Julian Quispe Lau Len</p>
+                        <p>@Model.NombresUsuario @Model.ApellidosUsuario</p>
                         <h2>Estudios</h2>
-                        <p>Ing. de Software</p>
-                        <h2>Edad</h2>
-                        <p>19 años</p>
+                        <p>@Model.EstudiosUsuario</p>
+                        <h2>Fecha de nacimiento</h2>
+                        <p>@Model.FNacUsuario</p>
                     </div>
                 </div>
             </div>
