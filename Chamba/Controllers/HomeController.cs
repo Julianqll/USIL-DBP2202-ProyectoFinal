@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net.Mime;
+using System.Text;
 
 namespace Chamba.Controllers
 {
@@ -27,35 +29,31 @@ namespace Chamba.Controllers
         }
 
         [HttpPost, Route("/login")]
-        public IActionResult LoginPost(Login login)
+        public async Task<ActionResult> LoginPost(Login login)
         {
             if (ModelState.IsValid)
             {
-
-                var resultado = (from TablaLogin in Context.Logins
-                                 where
-                                 TablaLogin.Correo == login.Correo && TablaLogin.Contraseña == login.Contraseña
-                                 select TablaLogin).FirstOrDefault();
-                if (resultado != null)
+                var httpCliente = new HttpClient();
+                String loginString = JsonConvert.SerializeObject(login);
+                var httpContent = new StringContent(loginString, Encoding.UTF8, "application/json");
+                var response = await httpCliente.PostAsync("https://localhost:7280/api/login/type", httpContent);
+                var responseInfo = await response.Content.ReadAsStringAsync();
+                System.Console.WriteLine(responseInfo);
+                if (responseInfo == "U")
                 {
-                    if (resultado.Rol == "U")
-                    {
-                        var usuario = (from TablaUsuarios in Context.Usuarios 
-                                       where TablaUsuarios.CorreoUsuario == resultado.Correo 
-                                       select TablaUsuarios).FirstOrDefault();
-                        HttpContext.Session.SetString("usuario", JsonConvert.SerializeObject(usuario));
-                        return Redirect("/perfilUsuario");
-                    }
-                    else 
-                    {
-                        var empresa = (from TablaEmpresas in Context.Empresas
-                                       where TablaEmpresas.CorreoEmpresa == resultado.Correo
-                                       select TablaEmpresas).FirstOrDefault();
-                        HttpContext.Session.SetString("empresa", JsonConvert.SerializeObject(empresa));
-                        return Redirect("/perfilEmpresa");
-                    }
-                    
+                    var newresponse = await httpCliente.PostAsync("https://localhost:7280/api/login", httpContent);
+                    var newresponseInfo = await newresponse.Content.ReadAsStringAsync();
+                    HttpContext.Session.SetString("usuario", newresponseInfo);
+                    return Redirect("/perfilUsuario");
                 }
+                else 
+                {
+                    var newresponse = await httpCliente.PostAsync("https://localhost:7280/api/login", httpContent);
+                    var newresponseInfo = await newresponse.Content.ReadAsStringAsync();
+                    HttpContext.Session.SetString("empresa", newresponseInfo);
+                    return Redirect("/perfilEmpresa");
+                }
+                   
             }
             return View("Login");
         }
